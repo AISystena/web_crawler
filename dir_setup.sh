@@ -1,0 +1,9 @@
+mkdir output
+cd output
+mkdir airplanes
+mkdir bass
+mkdir car
+mkdir chair
+mkdir faces
+mkdir tmp
+cd ../
