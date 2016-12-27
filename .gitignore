@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+lib/image_cnn/data/
+output/
