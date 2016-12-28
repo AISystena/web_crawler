@@ -1,1 +1,1 @@
-rm -f "$CURRENT_PATH"/output/*/*
+rm -f "$MAKE_PATH"/output/*/*

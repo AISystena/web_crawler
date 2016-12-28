@@ -1,9 +1,9 @@
-mkdir -p "$CURRENT_PATH"/output/airplanes
-mkdir -p "$CURRENT_PATH"/output/bass
-mkdir -p "$CURRENT_PATH"/output/car
-mkdir -p "$CURRENT_PATH"/output/chair
-mkdir -p "$CURRENT_PATH"/output/faces
-mkdir -p "$CURRENT_PATH"/output/tmp
+mkdir -p "$MAKE_PATH"/output/airplanes
+mkdir -p "$MAKE_PATH"/output/bass
+mkdir -p "$MAKE_PATH"/output/car
+mkdir -p "$MAKE_PATH"/output/chair
+mkdir -p "$MAKE_PATH"/output/faces
+mkdir -p "$MAKE_PATH"/output/tmp
 
-mkdir "$CURRENT_PATH"/lib/image_cnn/model
-mkdir "$CURRENT_PATH"/lib/image_cnn_gpu/model
+mkdir "$MAKE_PATH"/lib/image_cnn/model
+mkdir "$MAKE_PATH"/lib/image_cnn_gpu/model
