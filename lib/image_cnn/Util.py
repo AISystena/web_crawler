@@ -35,7 +35,7 @@ def load_data():
 
 def load_image(image_path):
     image = Image.open(image_path).convert('RGB')
-    #image = Image.open(image_path).convert('L')
+    # image = Image.open(image_path).convert('L')
     image_w, image_h = _image_shape()
     w, h = image.size
     if w > h:
@@ -51,21 +51,19 @@ def load_image(image_path):
     # pixelsは3次元でそれぞれの軸は[Y座標, X座標, RGB]を表す
     # 入力データは4次元で[画像インデックス, BGR, Y座標, X座標]なので、配列の変換を行う
     # RGBからBGRに変換する
-    pixels = pixels[:,:,::-1].transpose(2,0,1)
+    pixels = pixels[:, :, ::-1].transpose(2, 0, 1)
     # 平均画像を引く
-    pixels -= _mean_image()
-    #pixels = pixels.reshape((1, image_w, image_h))
-    #pixels /= 255
-    #return pixels.reshape((1,) + pixels.shape)
+    # pixels -= _mean_image()
+    pixels /= 255
     return pixels
 
 def _image_shape():
-    #return (224, 224)
+    # return (224, 224)
     return (32, 32)
 
 def _mean_image():
-    #mean_image = np.ndarray((3, 224, 224), dtype=np.float32)
-    mean_image = np.ndarray((3, 32, 32), dtype=np.float32)
+    mean_image = np.ndarray((3, 224, 224), dtype=np.float32)
+    # mean_image = np.ndarray((3, 32, 32), dtype=np.float32)
     mean_image[0] = 103.939
     mean_image[1] = 116.779
     mean_image[2] = 123.68
