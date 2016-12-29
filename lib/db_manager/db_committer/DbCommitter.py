@@ -1,9 +1,10 @@
+from abc import ABCMeta, abstractmethod
 import MySQLdb
  
-class DbManager:
+class DbConnector:
     def __init__(self):
         """ DBのコネクションを生成 """
-     
+
         # 接続する 
         self.con = MySQLdb.connect(
                 user='root',
@@ -38,7 +39,7 @@ class DbManager:
         return cur
 
 
-    def exe_query_fetchone(self, sql, params):
+    def exe_query_fetchone(self, sql, params=()):
         """ tableからデータを1行取得する """
         cur = self.__exe_query(sql, params)
         if cur is None:
@@ -51,7 +52,7 @@ class DbManager:
         cur.close
         return row
 
-    def exe_query_fetchall(self, sql, params):
+    def exe_query_fetchall(self, sql, params=()):
         """ tableからデータを全て取得する """
         cur = self.__exe_query(sql, params)
         if cur is None:
@@ -65,7 +66,7 @@ class DbManager:
         cur.close
         return rows
 
-    def exe_query_commit(self, sql, params):
+    def exe_query_commit(self, sql, params=()):
         """ tableへデータをコミットする """
         cur = self.__exe_query(sql, params)
         if cur is None:
@@ -77,7 +78,22 @@ class DbManager:
     def __del__(self):
         """ DBのコネクションを破棄 """
         self.con.close
- 
-if __name__ == "__main__":
-    dm = DbManager()
-    dm.exe_query_fetchall("select * from categories where id = %s", (1,))
+
+
+class DbCommitter(metaclass=ABCMeta):
+
+    @abstractmethod
+    def __init__(self):
+        self.dbc = DbConnector()
+
+    @abstractmethod
+    def insert(self, params=()):
+        pass
+
+    @abstractmethod
+    def update(self, params=()):
+        pass
+
+    @abstractmethod
+    def find_all(self):
+        pass

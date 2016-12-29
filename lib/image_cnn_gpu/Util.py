@@ -3,6 +3,7 @@ import numpy as np
 import os
 import glob
 from PIL import Image
+from Categories import Categories
 
 current_dir_path = os.path.dirname(__file__)
 data_dir = current_dir_path + '/data'
